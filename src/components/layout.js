@@ -22,6 +22,24 @@ const Layout = ({ children }) => {
     }
   `)
 
+  let onMouseMoveRippleEffect = (e) => {
+    // https://www.shipbit.de/blog/hover-ripple-button
+    const rect = document.body.getBoundingClientRect();
+    const x = ((e.clientX - rect.left) / document.body.clientWidth) * 100;
+    const y = ((e.clientY - rect.top) / document.body.clientHeight) * 100;
+
+    document.body.style.background = `radial-gradient(circle closest-corner 
+      at ${x}% ${y}%, var(--ripple-color), var(--bg-color))`;
+  };
+
+
+  React.useEffect(() => {
+    document.body.addEventListener('mousemove', onMouseMoveRippleEffect);
+    document.body.addEventListener("mouseleave", (event) => {
+      document.body.style.removeProperty("background");
+    });
+  });
+
   return (
     <>
       <Header siteTitle={data.site.siteMetadata?.title || `Title`} />

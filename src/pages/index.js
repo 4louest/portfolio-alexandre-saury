@@ -71,50 +71,61 @@ const utmParameters = `?utm_source=starter&utm_medium=start-page&utm_campaign=de
 
 const IndexPage = () => (
   <Layout>
-    <div className={styles.textCenter}>
-      <StaticImage
-        src="../images/example.png"
-        loading="eager"
-        width={64}
-        quality={95}
-        formats={["auto", "webp", "avif"]}
-        alt=""
-        style={{ marginBottom: `var(--space-3)` }}
-      />
-      <h1>
-        Welcome to <b>Gatsby!</b>
-      </h1>
-      <p className={styles.intro}>
-        <b>Example pages:</b>{" "}
-        {samplePageLinks.map((link, i) => (
-          <React.Fragment key={link.url}>
-            <Link to={link.url}>{link.text}</Link>
-            {i !== samplePageLinks.length - 1 && <> · </>}
-          </React.Fragment>
+    <div className={styles.container}>
+      <header className={styles.menu}>
+        <StaticImage
+          src="../images/example.png"
+          loading="eager"
+          width={64}
+          quality={95}
+          formats={["auto", "webp", "avif"]}
+          alt=""
+          style={{ marginBottom: `var(--space-3)` }}
+        />
+        <h1>
+          Alexandre Saury
+        </h1>
+        <h2>
+          Développeur full stack freelance
+        </h2>
+        <p>Je conçois des produits et des expériences numériques accessibles et inclusifs pour le web.</p>
+        <ul>
+          <li>A propos</li>
+          <li>Expérience</li>
+          <li>Projets</li>
+        </ul>
+      </header>
+      <div className={styles.mainBody}>
+        <ul className={styles.list}>
+        {links.map(link => (
+          <li key={link.url} className={styles.listItem}>
+            <a
+              className={styles.listItemLink}
+              href={`${link.url}${utmParameters}`}
+            >
+              {link.text} ↗
+            </a>
+            <p className={styles.listItemDescription}>{link.description}</p>
+          </li>
         ))}
-        <br />
-        Edit <code>src/pages/index.js</code> to update this page.
-      </p>
-    </div>
-    <ul className={styles.list}>
-      {links.map(link => (
-        <li key={link.url} className={styles.listItem}>
-          <a
-            className={styles.listItemLink}
-            href={`${link.url}${utmParameters}`}
-          >
-            {link.text} ↗
-          </a>
-          <p className={styles.listItemDescription}>{link.description}</p>
-        </li>
+      </ul>
+      {moreLinks.map((link, i) => (
+        <React.Fragment key={link.url}>
+          <a href={`${link.url}${utmParameters}`}>{link.text}</a>
+          {i !== moreLinks.length - 1 && <> · </>}
+        </React.Fragment>
       ))}
-    </ul>
-    {moreLinks.map((link, i) => (
-      <React.Fragment key={link.url}>
-        <a href={`${link.url}${utmParameters}`}>{link.text}</a>
-        {i !== moreLinks.length - 1 && <> · </>}
-      </React.Fragment>
-    ))}
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam non tellus luctus, ultrices tortor accumsan, posuere odio. Duis gravida orci lorem, a consectetur arcu varius hendrerit. Integer eu facilisis erat. Aenean vel sodales justo. Pellentesque hendrerit at sapien sit amet tristique. Ut a scelerisque nisi. Etiam vehicula id libero id fringilla. Sed a vulputate sapien.
+
+Morbi hendrerit justo lectus, sit amet venenatis risus varius placerat. Suspendisse potenti. Cras consequat rhoncus nunc non tincidunt. Aliquam in cursus nunc. Etiam nec libero id nulla tristique tempus at eu nunc. Etiam vitae elementum dolor. Donec ac erat libero. Ut condimentum quis ante at eleifend. Donec sed nisi molestie, blandit erat ut, sagittis ipsum. Ut rutrum ligula ante, id rutrum ex congue vitae. Etiam venenatis dui a risus tempor placerat. Etiam sit amet turpis sit amet libero egestas congue.
+
+Mauris in felis sed risus ullamcorper ullamcorper eget eu nibh. Aenean cursus tellus pulvinar ipsum pulvinar, ut rhoncus dolor viverra. Ut tristique lacinia diam, a ultricies neque tristique at. Ut gravida magna ipsum, eget venenatis mi ultricies pharetra. Vestibulum nec tristique ligula. Donec ut aliquet orci. Maecenas semper imperdiet dui, in pulvinar metus euismod at. Pellentesque sapien nisl, dictum sit amet felis a, iaculis cursus eros. Nullam volutpat ultrices commodo. Suspendisse vulputate nulla eget mauris sodales feugiat.
+
+Ut fringilla eget nulla vel vulputate. Etiam quis scelerisque ipsum. Nulla egestas lorem mollis, gravida ante ac, egestas tellus. Nam nec turpis eu magna tempor vehicula. Praesent sit amet semper sapien. Sed eget purus quis metus varius aliquet. Quisque in lectus vestibulum, sagittis ante eu, lacinia enim.
+
+Aliquam maximus massa felis, id pharetra diam gravida a. Aenean lobortis dictum erat iaculis varius. Proin magna arcu, efficitur sed odio in, aliquet malesuada arcu. Cras fringilla arcu magna, interdum egestas orci blandit sit amet. Etiam interdum ornare erat, sed sagittis eros. Integer convallis nulla feugiat lorem sodales commodo sed sit amet magna. Nam eget justo urna. Nunc tristique, lacus at pharetra finibus, magna odio tincidunt sapien, nec pretium nisi leo et orci. In sit amet dui ultricies dui vestibulum lacinia id id risus. Ut tincidunt ullamcorper urna, vel molestie nulla iaculis et. Fusce a purus vel justo ornare finibus. Nullam commodo lectus elit, ac aliquet massa ornare id. Vivamus at eleifend ipsum, at efficitur odio. Nullam sagittis nulla id augue dapibus semper. Pellentesque faucibus nec nulla et tempor. Curabitur aliquam faucibus lectus nec ornare.</p>
+      </div>
+    </div>
   </Layout>
 )
 
