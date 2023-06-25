@@ -1,13 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Playfair+Display:wght@700&family=Ysabeau+Office:wght@800;900&display=swap');
+
+
 :root {
   --border-radius: 4px;
-  --color-text: #333;
-  --color-primary: #7026b9;
+  --color-text: #ebe3fd;
+  --color-primary: #22065a;
+  --color-dark-grey: #a197b7;
+  --color-light: #ebe3fd;
   --color-code-bg: #fff4db;
   --color-code: #8a6534;
-  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial,
+  --font-sans: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial,
     sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
   --font-mono: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
     "Courier New", monospace;
+  --font-title: 'Ysabeau Office', serif;
   --font-lg: 18px;
   --font-md: 16px;
   --font-sm: 14px;
@@ -21,10 +27,13 @@
   --space-4: 24px;
   --space-5: 32px;
   --space-6: 64px;
-  --size-content: 54rem;
+  --size-content: 1280px;
   --size-gutter: var(--space-5);
   --size-gap: var(--space-6);
+  --bg-color: #10032A;
+  --ripple-color: #22065A;
 }
+
 html {
   -webkit-text-size-adjust: 100%;
   box-sizing: border-box;
@@ -33,6 +42,7 @@ html {
   line-height: var(--line-height-normal);
   overflow-y: scroll;
 }
+
 body {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
@@ -42,48 +52,66 @@ body {
   font-weight: normal;
   margin: 0;
   word-wrap: break-word;
+  background-color: var(--bg-color);
 }
+
+header {
+  margin: 0 50px;
+}
+
 a {
   background-color: transparent;
-  color: var(--color-primary);
+  color: var(--color-dark-grey);
   text-decoration: none;
   font-weight: 500;
-  text-decoration: underline;
-  text-decoration-thickness: 1.5px;
-  text-underline-offset: 2px;
 }
+
 a:active,
 a:hover {
   outline-width: 0;
   text-decoration: none;
 }
+
 abbr[title] {
   border-bottom: 1px dotted hsla(0, 0%, 0%, 0.5);
   cursor: help;
   text-decoration: none;
 }
+
 b,
 strong {
   font-weight: inherit;
   font-weight: bolder;
 }
+
 dfn {
   font-style: italic;
 }
+
 h1 {
   margin: 0;
-  margin-bottom: 3rem;
+  margin-bottom: 0;
   padding: 0;
   line-height: var(--line-height-dense);
   letter-spacing: -0.01em;
+  font-family: var(--font-title);
+  color: var(--color-light);
+  font-size: 48px;
 }
-h1 > b {
+
+h1>b {
   color: var(--color-primary);
 }
+
+h2 {
+  font-size: var(--font-lg);
+}
+
 img {
   border-style: none;
   max-width: 100%;
 }
+
 code,
 kbd,
 pre,
@@ -92,6 +120,7 @@ samp {
   font-size: 1em;
   line-height: inherit;
 }
+
 hr {
   box-sizing: content-box;
   overflow: visible;
@@ -104,15 +133,19 @@ hr {
   border: none;
   height: 1px;
 }
+
 * {
   box-sizing: inherit;
 }
+
 *:before {
   box-sizing: inherit;
 }
+
 *:after {
   box-sizing: inherit;
 }
+
 hgroup,
 img,
 figure,
@@ -126,12 +159,14 @@ p {
   padding: 0;
   margin-bottom: var(--space-4);
 }
+
 ul,
 ol {
   margin-left: var(--space-4);
   list-style-position: outside;
   list-style-image: none;
 }
+
 pre {
   margin-left: 0;
   margin-right: 0;
@@ -145,57 +180,78 @@ pre {
   word-wrap: normal;
   padding: var(--space-4);
 }
+
 b,
 strong,
 dt,
 th {
   font-weight: bold;
 }
+
 li {
   margin-bottom: calc(var(--space-4) / 2);
+  list-style: none;
 }
+
 ol li,
 ul li {
   padding-left: 0;
 }
-li > ol,
-li > ul {
+
+li>ol,
+li>ul {
   margin-bottom: calc(var(--space-4) / 2);
   margin-left: var(--space-4);
   margin-top: calc(var(--space-4) / 2);
 }
+
 blockquote *:last-child {
   margin-bottom: 0;
 }
+
 li *:last-child {
   margin-bottom: 0;
 }
+
 p *:last-child {
   margin-bottom: 0;
 }
-li > p {
+
+p.inherit {
+  text-align: inherit;
+}
+
+li>p {
   margin-bottom: calc(var(--space-4) / 2);
 }
+
 p {
   max-width: 680px;
+  color: var(--color-dark-grey);
 }
+
 code {
   font-size: 0.875rem;
 }
+
 kbd {
   font-size: 0.875rem;
 }
+
 samp {
   font-size: 0.875rem;
 }
+
 abbr {
   border-bottom: 1px dotted hsla(0, 0%, 0%, 0.5);
   cursor: help;
 }
+
 acronym {
   border-bottom: 1px dotted hsla(0, 0%, 0%, 0.5);
   cursor: help;
 }
+
 tt,
 code {
   background-color: var(--color-code-bg);
@@ -206,9 +262,11 @@ code {
   padding-top: 0.25em;
   word-break: normal;
 }
+
 pre code {
   background: none;
 }
+
 code:before,
 code:after,
 tt:before,
@@ -216,9 +274,23 @@ tt:after {
   content: "\00a0";
   letter-spacing: -0.2em;
 }
+
 pre code:before,
 pre code:after,
 pre tt:before,
 pre tt:after {
   content: none;
+}
+
+.font-dark-grey {
+  color: var(--color-dark-grey);
+}
+
+* {
+  scroll-behavior: smooth !important;
+}
+
+*::selection {
+  color: #5A0614;
+  background-color: #CF334D;
 }
