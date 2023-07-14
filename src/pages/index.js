@@ -1,7 +1,6 @@
 import * as React from "react"
 import { Link } from "gatsby"
 import { StaticImage } from "gatsby-plugin-image"
-
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 import * as styles from "../components/index.module.css"
@@ -12,37 +11,88 @@ const experiences = [
     title: "Développeur freelance",
     sub: "Développeur fullstack & designer web",
     desc:
-      "A great place to get started if you're new to web development. Designed to guide you through setting up your first Gatsby site.",
+      "Développement, livraison et maintenance d'application web de haute qualité pour clients de différents horizons \
+      (menuisiers, photographes, PME).",
+    tags: ["React", "Gatsby", "Wordpress", "Ghost", "Rust", "Javascript"],
   },
   {
     range: "2017 - 2022",
     title: "Ingénieur d'étude Fiducial Informatique",
     sub: "Développeur fullstack Java & Angular",
     desc:
-      "A collection of websites ranging from very basic to complex/complete that illustrate how to accomplish specific tasks within your Gatsby sites.",
+      "Développement d'une application fullstack de rédaction d'acte à destination des cabinets notaire en mode SaS.",
+    tags: ["Java", "Spring", "Hibernate", "MySQL", "Angular", "Debian", "Git"],
+    link: "https://www.fiducial.fr/",
   },
   {
     range: "2013 - 2017",
     title: "Dirigeant d'entreprise 4lcom",
-    sub: "CEO & Développeur Symfony, AngularJS, Node, Objective C",
+    sub: "CEO & Développeur Symfony, AngularJS, Node, Swift",
     desc:
-      "Learn how to add functionality and customize your Gatsby site or app with thousands of plugins built by our amazing developer community.",
+      "Développement de solution complète à destination de chaînes de restauration. Clients principaux: O'Tacos (voir projet), Popsushi.",
+    tags: ["Symfony", "AngularJS", "ElasticSearch", "Electron", "Swift"],
+    link: "https://4lcom.fr/"
   },
   {
     range: "2009 - 2011",
     title: "Développeur d'application chez Ooxiem",
     sub: "Développeur .net, flex, php",
     desc:
-      "Now you’re ready to show the world! Give your Gatsby site superpowers: Build and host on Gatsby Cloud. Get started for free!",
+      "Développement d'application à destination de TPE et PME type Valéo, Carrefour, 4Murs etc.",
+    tags: ["Php", "Html/Css", ".Net", "Flex", "MySQL", "Access"],
   },
   {
     range: "2008 - 2010",
     title: "Développeur web chez Attrait",
     sub: "Développeur web PHP & html/css/Jquery",
     desc:
-      "Now you’re ready to show the world! Give your Gatsby site superpowers: Build and host on Gatsby Cloud. Get started for free!",
+      "Développement de sites web type portail et e-commerce.",
+    tags: ["Php", "Html/Css", "JQuery", "MySQL"],
+    link: "https://attrait.com/",
   },
 ]
+
+const projects = [
+  {
+    title: "mathurinvauthier.com, photographe montagne professionnel et alpiniste",
+    desc: "Conception et paramétrage d'un site web pour artiste photographe montagne basé sur CMS Wordpress",
+    image: "/images/logo-signature.png",
+    link: "https://www.mathurinvauthier.com",
+  },
+  {
+    title: "Wimenuiserie, site web menuisier professionnel",
+    desc: "Conception et paramétrage d'un site web pour artisan menuisier lyonnais basé sur CMS Wordpress",
+    image: "/images/logo-wim.png",
+    link: "https://www.wimenuiserie.com/",
+  },
+  {
+    title: "Développement progiciel Signature by Fiducial",
+    desc: "Solution globale agrégeant plusieurs outils à destination des notaires <br/><br/> \
+    1. Logiciel de rédaction d'acte (LRA) <br/>\
+    2. Outil de signature electronique d'acte basé sur technologie Micen <br> \
+    3. Application de gestion workflow autour de la rédaction, du suivi et du dépôt d'acte notarié.<br/> \
+    4. Pilotage et communication avec webservices externes.",
+    image: "/images/logo-signature.png",
+    link: "https://www.fiducial.fr/Notariat/Logiciel-Notaire/Signature",
+  },
+  {
+    title: "Réalisation de l'infrastructure technique pour la franchise O'Tacos",
+    desc: "Solution globale agrégeant plusieurs canaux de vente <br/><br/><ol> \
+    <li>Caisse enregistreuse internationale (France, US, Brooklyn, Maroc, Brunei)<br/> \
+    Application web avec fonctionnement offline et communication entre les points de vente d'un même restaurant, gestion de catalogue centralisée, remontée en temps réel des données de vente.</li>\
+    <li>E-commerce a base de Prestashop</li>\
+    <li>Application mobile multiplateforme développée avec IONIC consommant l'api REST du ecommerce.</li>\
+    <li>Borne tactile de prise de commande réalisée avec Electron, interfaçage avec TPE Ingenico et imprimante thermique, échange Websocket avec les caisses enregistreuse du même restaurant pour impression des tickets en cuisine.</li>\
+    <li>Interface de gestion de franchise :\
+    &emsp;- Affichage temps réel des chiffres d'affaire par pays, par franchise, par restaurant, par produit etc.<br/> \
+    &emsp;- Interface de configuration des caisses évitant une connexion en télémaintenance (configuration des imprimantes, version logicielles, clé API etc..)<br/> \
+    &emsp;- Gestion des catalogues de produits globaux avec spécificités réglables par restaurants, synchronisation automatique et pilotable à la demande vers le e-commerce et chaque point de vente.<br/> \
+    &emsp;- Pilotage + Facturation automatique des redevances par franchisé.<br/> \
+    &emsp;- Suivi des plannings et temps de présences des employés</li>",
+    image: "/images/logo-otacos.png",
+    link: "https://www.o-tacos.fr/",
+  },
+];
 
 const samplePageLinks = [
   {
@@ -114,11 +164,9 @@ const IndexPage = () => {
         <section>
           <div id="about" className={styles.mainBody}>
             <p className={styles.inherit}>
-              Passionné depuis toujours par l'informatique et le développement, j'ai créé ma première société en 2013.
-              Avec 4 associés, nous avons développé tout un écosystème à destination de chaînes de restauration. Notre solutions intègre entre autres,
-              une application d'encaissement, un système de commande centralisé avec un BI piloté grâce à ElasticSearch,
-              des canaux de commande (site internet, application mobile, borne de commande interactive) et des outils marketing tels qu'une
-              plateforme de communication par sms et emailing.
+              Passionné depuis toujours par l'informatique et le développement, j'ai créé ma première <b>start-up</b> en 2013.
+              Avec 4 associés, nous avons développé tout un écosystème à destination de chaînes de restauration. Notre solution intègre entre autres, une application d'encaissement, un système de commande centralisé avec un <b>BI</b> piloté grâce à <b>ElasticSearch</b>,
+              des canaux de commande (site internet, application mobile, borne de commande interactive) et des outils marketing tels qu'une plateforme de communication par sms et emailing.
             </p>
             <p className={styles.inherit}>
               Suite à cette riche expérience en start-up, j'ai passé cinq ans au sein d'une équipe de développement pour participer au
@@ -126,37 +174,58 @@ const IndexPage = () => {
             </p>
             <p className={styles.inherit}>Fort de ces expériences, je rejoins maintenant le monde du freelance pour proposer des outils b2b adaptés pour
               les indépendants, artisants et PME nécessitant les services d'un développeur.
+
+              <br/><br/>
+              Lorsque je ne suis pas sur l'ordinateur, je suis généralement en montagne à faire de l'alpinisme, de l'escalade ou du ski. Certaines de mes aventures sont d'ailleurs disponibles sur <Link to="https://www.carnet-de-montagne.com/" target="_blank" className={styles.link}>mon blog</Link>.
             </p>
-          </div>
-          <ul id="experience">
+
+            <ul id="experience" className={styles.expBloc}>
             {experiences.map(exp => (
               <li key={exp.title}>
-                <div className={styles.expItem}>
+                <Link target="_blank" to={exp.link}>
+                <div className={[styles.expItem, exp.link ? styles.hasLink : ``].join(" ")}>
                   <header>{exp.range}</header>
                   <div>
-                    <h3>{exp.title}</h3>
+                    <h3>
+                      {exp.title} <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" className={styles.arrow} fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z" clip-rule="evenodd"></path></svg>
+                    </h3>
                     <div className={styles.sub}>{exp.sub}</div>
                     <p className={styles.desc}>{exp.desc}</p>
+                    <div className={styles.tags}>
+                      {exp.tags?.map(tag => (
+                        <span className={styles.tag}>{tag}</span>
+                      ))}
+                    </div>
                   </div>
                 </div>
+                </Link>
               </li>
             ))}
           </ul>
+          </div>
+
+          <div id="projets" className={styles.projBloc}>
+            <ul>
+            {projects.map(proj => (
+              <li key={proj.title}>
+                <div className={styles.projItem}>
+                  <header><img src={proj.image} /></header>
+                  <div>
+                    <h3>{proj.title}</h3>
+                    <div className={styles.desc} dangerouslySetInnerHTML={{ __html: proj.desc }} />
+                  </div>
+                </div>
+              </li>
+              ))}
+            </ul>
+          </div>
+          
           {moreLinks.map((link, i) => (
             <React.Fragment key={link.url}>
               <a href={`${link.url}${utmParameters}`}>{link.text}</a>
               {i !== moreLinks.length - 1 && <> · </>}
             </React.Fragment>
           ))}
-          <p id="projets">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam non tellus luctus, ultrices tortor accumsan, posuere odio. Duis gravida orci lorem, a consectetur arcu varius hendrerit. Integer eu facilisis erat. Aenean vel sodales justo. Pellentesque hendrerit at sapien sit amet tristique. Ut a scelerisque nisi. Etiam vehicula id libero id fringilla. Sed a vulputate sapien.
-
-            Morbi hendrerit justo lectus, sit amet venenatis risus varius placerat. Suspendisse potenti. Cras consequat rhoncus nunc non tincidunt. Aliquam in cursus nunc. Etiam nec libero id nulla tristique tempus at eu nunc. Etiam vitae elementum dolor. Donec ac erat libero. Ut condimentum quis ante at eleifend. Donec sed nisi molestie, blandit erat ut, sagittis ipsum. Ut rutrum ligula ante, id rutrum ex congue vitae. Etiam venenatis dui a risus tempor placerat. Etiam sit amet turpis sit amet libero egestas congue.
-
-            Mauris in felis sed risus ullamcorper ullamcorper eget eu nibh. Aenean cursus tellus pulvinar ipsum pulvinar, ut rhoncus dolor viverra. Ut tristique lacinia diam, a ultricies neque tristique at. Ut gravida magna ipsum, eget venenatis mi ultricies pharetra. Vestibulum nec tristique ligula. Donec ut aliquet orci. Maecenas semper imperdiet dui, in pulvinar metus euismod at. Pellentesque sapien nisl, dictum sit amet felis a, iaculis cursus eros. Nullam volutpat ultrices commodo. Suspendisse vulputate nulla eget mauris sodales feugiat.
-
-            Ut fringilla eget nulla vel vulputate. Etiam quis scelerisque ipsum. Nulla egestas lorem mollis, gravida ante ac, egestas tellus. Nam nec turpis eu magna tempor vehicula. Praesent sit amet semper sapien. Sed eget purus quis metus varius aliquet. Quisque in lectus vestibulum, sagittis ante eu, lacinia enim.
-
-            Aliquam maximus massa felis, id pharetra diam gravida a. Aenean lobortis dictum erat iaculis varius. Proin magna arcu, efficitur sed odio in, aliquet malesuada arcu. Cras fringilla arcu magna, interdum egestas orci blandit sit amet. Etiam interdum ornare erat, sed sagittis eros. Integer convallis nulla feugiat lorem sodales commodo sed sit amet magna. Nam eget justo urna. Nunc tristique, lacus at pharetra finibus, magna odio tincidunt sapien, nec pretium nisi leo et orci. In sit amet dui ultricies dui vestibulum lacinia id id risus. Ut tincidunt ullamcorper urna, vel molestie nulla iaculis et. Fusce a purus vel justo ornare finibus. Nullam commodo lectus elit, ac aliquet massa ornare id. Vivamus at eleifend ipsum, at efficitur odio. Nullam sagittis nulla id augue dapibus semper. Pellentesque faucibus nec nulla et tempor. Curabitur aliquam faucibus lectus nec ornare.</p>
         </section>
       </div>
     </Layout>

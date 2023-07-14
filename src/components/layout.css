@@ -32,6 +32,8 @@
   --size-gap: var(--space-6);
   --bg-color: #10032A;
   --ripple-color: #22065A;
+  --highlight-bg-color: #5A0614;
+  --highlight-color: #CF334D;
 }
 
 html {
@@ -82,6 +84,7 @@ b,
 strong {
   font-weight: inherit;
   font-weight: bolder;
+  color: var(--color-text);
 }
 
 dfn {
@@ -291,6 +294,6 @@ pre tt:after {
 }
 
 *::selection {
-  color: #5A0614;
-  background-color: #CF334D;
+  color: var(--highlight-bg-color);
+  background-color: var(--highlight-color);
 }
